@@ -19,7 +19,7 @@ func acountList(c echo.Context) error {
 
 // Route 路由
 func Route(e *echo.Echo) {
-	e.GET("/login", Index)
+	e.GET("/log/query", Index)
 	e.POST("/user/account", acountList)
 
 }

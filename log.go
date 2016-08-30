@@ -7,7 +7,7 @@ import (
 
 var Log *log.Logger
 
-func initlog(config map[string]string) {
+func Initlog(config map[string]string) {
 	log.SetFormatter(&log.TextFormatter{})
 
 	//输出到graylog
@@ -19,7 +19,7 @@ func initlog(config map[string]string) {
 	// log.AddHook(glog)
 
 	//输出到文件
-	log.AddHook(file.NewHook("log/logd_web.log"))
+	log.AddHook(file.NewHook(config["log_file"]))
 
 	//yijifu组件中的member模块的日志
 	//log.WithField("biz", "member").Errorf("member not login,member is %s", "1001")

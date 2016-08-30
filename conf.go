@@ -1,8 +1,6 @@
 package main
 
-import (
-	"./app/utils/tools"
-)
+import "logd_web/app/utils"
 
 // Conf 配置入口
 func Conf() {
@@ -20,6 +18,8 @@ func Conf() {
 
 	// fmt.Println(dbURL)
 
-	cfg := tools.ReadConfig("./conf/config.ini")
+	cfg := utils.ReadConfig("./conf/config.ini")
+
+	Initlog(cfg["log"])
 
 }

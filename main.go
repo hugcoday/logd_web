@@ -10,7 +10,7 @@ import (
 
 func main() {
 	//config init
-	initlog()
+
 	Conf()
 
 	e := echo.New()

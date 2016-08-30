@@ -1,4 +1,4 @@
-package tools
+package utils
 
 /*************
 * 配置读取函数，配置格式为ini格式
