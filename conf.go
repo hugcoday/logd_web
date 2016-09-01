@@ -1,6 +1,9 @@
 package main
 
-import "logd_web/app/utils"
+import (
+	"logd_web/comm/utils"
+	"logd_web/comm/validate"
+)
 
 // Conf 配置入口
 func Conf() {
@@ -17,9 +20,10 @@ func Conf() {
 	// dbURL := mysql.Key("db_url").Value()
 
 	// fmt.Println(dbURL)
-
+	validate.Init()
 	cfg := utils.ReadConfig("./conf/config.ini")
 
 	Initlog(cfg["log"])
+	utils.InitDB(cfg["mgo"])
 
 }
