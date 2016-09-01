@@ -12,15 +12,8 @@ import (
 	"github.com/labstack/echo"
 )
 
-// SearchData : query condition
-// type SearchData struct {
-// 	QueryDate int    `json:"querydate"`
-// 	QueryText string `json:"querytext"`
-// }
-
 // Index  获取用户列表
 func Index(c echo.Context) error {
-	log.Info("start")
 	//var result LogData
 	condition := new(SearchData)
 	if err := c.Bind(condition); err != nil {
@@ -45,12 +38,7 @@ func Index(c echo.Context) error {
 	if pages.PageIndex > 1 {
 		curIndex = pages.PageIndex - 1
 	}
-	// pages := new(model.PagesModel)
-	// if err := c.Bind(pages); err != nil {
-	// 	return err
-	// }
 
-	//	mmap := utils.ConvertToMap(condition)
 	var queryCondition bson.M
 	if len(condition.QueryText) == 0 {
 		queryCondition = bson.M{"ctime": bson.M{"$gte": condition.StartDate, "$lte": condition.EndDate}}
@@ -58,9 +46,8 @@ func Index(c echo.Context) error {
 		queryCondition = bson.M{"ctime": bson.M{"$gte": condition.StartDate, "$lte": condition.EndDate}, "$text": bson.M{"$search": condition.QueryText}}
 	}
 
-	data := utils.MDB.FindPage("logd_20160829", "logdata", queryCondition, curIndex)
-	count := utils.MDB.FindCount("logd_20160829", "logdata", queryCondition)
-	//pages := base.PagesModel{}
+	data, count := utils.MDB.FindPage("logd_20160829", "logdata", queryCondition, curIndex)
+
 	pages.Total = count
 	pages.Data = data
 
@@ -73,5 +60,4 @@ func Index(c echo.Context) error {
 // Route 路由
 func Route(e *echo.Echo) {
 	e.POST("/log/query", Index)
-
 }

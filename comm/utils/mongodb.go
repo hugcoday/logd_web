@@ -127,7 +127,7 @@ func (this *Mdb) FindCount(db string, collection string, condition bson.M) (resu
 	return result
 }
 
-func (this *Mdb) FindPage(db string, collection string, condition bson.M, PageIndex int) (results []interface{}) {
+func (this *Mdb) FindPage(db string, collection string, condition bson.M, PageIndex int) (results []interface{}, count int) {
 	//	var session *mgo.Session
 	c := this.session.DB(db).C(collection)
 
@@ -135,5 +135,7 @@ func (this *Mdb) FindPage(db string, collection string, condition bson.M, PageIn
 	if err != nil {
 		log.Error(err)
 	}
-	return results
+
+	count = this.FindCount(db, collection, condition)
+	return results, count
 }
