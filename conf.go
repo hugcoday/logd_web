@@ -1,8 +1,8 @@
 package main
 
 import (
-	"logd_web/comm/utils"
-	"logd_web/comm/validate"
+	"./comm/utils"
+	"./comm/validate"
 )
 
 // Conf 配置入口

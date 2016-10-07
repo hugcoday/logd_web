@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	log "github.com/gogap/logrus"
+	log "github.com/hugcoday/logrus"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )

@@ -1,22 +1,23 @@
 package logquery
 
 import (
-	"logd_web/app/model"
-	"logd_web/comm/utils"
-	"logd_web/comm/validate"
 	"net/http"
+
+	"../../../app/model"
+	"../../../comm/utils"
+	"../../../comm/validate"
 
 	"gopkg.in/mgo.v2/bson"
 
-	log "github.com/gogap/logrus"
-	"github.com/labstack/echo"
+	log "github.com/hugcoday/logrus"
+	"github.com/kataras/iris"
 )
 
 // Index  获取用户列表
-func Index(c echo.Context) error {
+func Index(c iris.Context) error {
 	//var result LogData
 	condition := new(SearchData)
-	if err := c.Bind(condition); err != nil {
+	if err := c.ReadJSON(condition); err != nil {
 		log.Error(err)
 		return err
 	}
@@ -31,7 +32,7 @@ func Index(c echo.Context) error {
 
 	result := model.ResultModel{1000, "ok", nil}
 	pages := new(model.PagesModel)
-	if err := c.Bind(pages); err != nil {
+	if err := c.ReadJSON(pages); err != nil {
 		return err
 	}
 	curIndex := 0
@@ -58,6 +59,6 @@ func Index(c echo.Context) error {
 }
 
 // Route 路由
-func Route(e *echo.Echo) {
-	e.POST("/log/query", Index)
+func Route() {
+	iris.Post("/log/query", Index)
 }
