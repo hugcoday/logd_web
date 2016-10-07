@@ -27,5 +27,5 @@ log
 *.test
 *.prof
 
-vendor
+#vendor
 

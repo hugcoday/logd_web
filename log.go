@@ -1,15 +1,17 @@
 package main
 
 import (
-	log "github.com/gogap/logrus"
-	"github.com/gogap/logrus/hooks/file"
+	"os"
+
+	log "github.com/hugcoday/logrus"
+	"github.com/hugcoday/logrus/hooks/file"
 )
 
 var Log *log.Logger
 
 func Initlog(config map[string]string) {
-	log.SetFormatter(&log.TextFormatter{})
-
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
 	//输出到graylog
 	// glog, err := graylog.NewHook("boot2docker:9001", "yijifu", nil)
 	// if err != nil {

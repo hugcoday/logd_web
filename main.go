@@ -1,43 +1,38 @@
 package main
 
 import (
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/fasthttp"
-	"github.com/labstack/echo/middleware"
-
-	log "github.com/gogap/logrus"
+	log "github.com/hugcoday/logrus"
+	"github.com/kataras/iris"
 )
 
 func main() {
 	//config init
 
 	Conf()
+	Route()
 
-	e := echo.New()
+	iris.OnError(iris.StatusInternalServerError, func(ctx *iris.Context) {
+		ctx.Write("CUSTOM 500 INTERNAL SERVER ERROR PAGE")
+		// or ctx.Render, ctx.HTML any render method you want
+		ctx.Log("http status: 500 happened!")
+	})
 
-	//middleware config init
-	//route log
-	//	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-	//		Format: "time=${time_rfc3339},method=${method}, uri=${uri}, status=${status}\n",
-	//	}))
-	// gzip open
-	e.Use(middleware.GzipWithConfig(middleware.GzipConfig{Level: 5}))
-	// static file
+	iris.OnError(iris.StatusNotFound, func(ctx *iris.Context) {
+		ctx.Write("CUSTOM 404 NOT FOUND ERROR PAGE")
+		ctx.Log("http status: 404 happened!")
+	})
 
-	e.Use(middleware.CORS())
+	// emit the errors to test them
+	iris.Get("/500", func(ctx *iris.Context) {
+		ctx.EmitError(iris.StatusInternalServerError) // ctx.Panic()
+	})
 
-	e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-		Root:   "public",
-		Browse: false,
-	}))
+	iris.Get("/404", func(ctx *iris.Context) {
+		ctx.EmitError(iris.StatusNotFound) // ctx.NotFound()
+	})
 
-	//	e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
-	//		SigningKey: []byte("secret"),
-	//		Extractor:  middleware.JWTFromHeader,
-	//	}))
-	// route init
-	Route(e)
-	log.Info("server started at 3002")
-	e.Run(fasthttp.New(":3002"))
+	iris.Set(iris.OptionGzip(true))
 
+	log.Info("server starting")
+	iris.Listen(":8080")
 }

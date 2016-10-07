@@ -1,13 +1,9 @@
 package main
 
-import (
-	"logd_web/app/service/logquery"
-
-	"github.com/labstack/echo"
-)
+import "logd_web/app/service/estate/building"
 
 // Route init
-func Route(e *echo.Echo) {
+func Route() {
 
-	logquery.Route(e)
+	building.Route()
 }

@@ -24,6 +24,6 @@ func Conf() {
 	cfg := utils.ReadConfig("./conf/config.ini")
 
 	Initlog(cfg["log"])
-	utils.InitDB(cfg["mgo"])
+	//	utils.InitDB(cfg["mgo"])
 
 }

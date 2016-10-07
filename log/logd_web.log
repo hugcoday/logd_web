@@ -292,3 +292,39 @@ D:/GOPATH/src/logd_web/app/service/logquery/logquery.go:34
 D:/GOPATH/src/logd_web/app/service/logquery/logquery.go:23
 2016/09/01 10:25:28 [INFO] {1000 ok 0xc04223a4e0}
 D:/GOPATH/src/logd_web/app/service/logquery/logquery.go:69
+2016/09/19 13:35:12 [ERROR] init mongodb session error:no reachable servers
+D:/GOPATH/src/logd_web/comm/utils/mongodb.go:59
+2016/09/19 13:35:12 [ERROR] init mongodb session failed
+D:/GOPATH/src/logd_web/comm/utils/mongodb.go:42
+2016/10/07 10:57:41 [ERROR] init mongodb session error:no reachable servers
+D:/GOPATH/src/logd_web/comm/utils/mongodb.go:59
+2016/10/07 10:57:41 [ERROR] init mongodb session failed
+D:/GOPATH/src/logd_web/comm/utils/mongodb.go:42
+2016/10/07 14:55:23 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 14:57:10 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 14:57:20 [INFO] query test
+D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
+2016/10/07 14:59:52 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 14:59:59 [INFO] query test
+D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
+2016/10/07 15:01:55 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 15:02:04 [INFO] query test
+D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
+2016/10/07 15:04:45 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 15:04:51 [INFO] query test
+D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
+2016/10/07 15:08:19 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 15:08:33 [INFO] query test
+D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
+2016/10/07 15:09:34 [INFO] server starting
+D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 15:51:26 [INFO] server starting
+    D:/GOPATH/src/logd_web/main.go:36
+2016/10/07 15:51:33 [INFO] query test
+    D:/GOPATH/src/logd_web/app/service/estate/building/buildingCtrl.go:17
