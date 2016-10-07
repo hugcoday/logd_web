@@ -1,8 +1,9 @@
 package main
 
 import (
-	"./comm/utils"
-	"./comm/validate"
+	"estate/comm/utils"
+
+	"estate/comm/validate"
 )
 
 // Conf 配置入口

@@ -1,6 +1,6 @@
 package main
 
-import "./app/service/estate/building"
+import "estate/app/service/estate/building"
 
 // Route init
 func Route() {

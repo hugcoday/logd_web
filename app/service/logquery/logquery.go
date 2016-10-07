@@ -3,9 +3,10 @@ package logquery
 import (
 	"net/http"
 
-	"../../../app/model"
-	"../../../comm/utils"
-	"../../../comm/validate"
+	"estate/app/model"
+
+	"estate/comm/utils"
+	"estate/comm/validate"
 
 	"gopkg.in/mgo.v2/bson"
 
